@@ -1,7 +1,7 @@
 import { Feature } from 'ol'
 import LineString from 'ol/geom/LineString'
 import Point from 'ol/geom/Point'
-import { toLonLat, fromLonLat } from 'ol/proj'
+import { fromLonLat } from 'ol/proj'
 
 const startCoords = [
   2.345151901245117,
@@ -52,10 +52,15 @@ const computePos = (trajectory, speed, elapsed) => {
 
 const updateParcel = _ => {
   const elapsed = new Date() - startTime// In milisecs
+  const oldPos = parcel.getGeometry().flatCoordinates
   const newPos = computePos(trajectory,
     100, // speed in m/s
     elapsed / 1000// in seconds
   )
+  let delta = newPos ? [
+    newPos[0] - oldPos[0],
+    newPos[1] - oldPos[1]
+  ] : [0, 0]
 
   if (newPos) {
     moveParcel(newPos, parcel)
@@ -63,9 +68,13 @@ const updateParcel = _ => {
     alert('newPos oob - clearing')
     clearInterval(updateInterval)
   }
+
+  return delta
 }
 
-const updateInterval = setInterval(updateParcel, 100)
+const updateInterval = setInterval(_ => {
+  parcel.delta = updateParcel()
+}, 500)
 
 console.log(parcel)
 export default parcel

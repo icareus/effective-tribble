@@ -6,9 +6,6 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js'
 import {OSM, Vector as VectorSource} from 'ol/source.js'
 import {Circle as CircleStyle, Stroke, Style} from 'ol/style.js'
 
-// Nik, la flemme d'eject
-// import { apply } from 'ol-mapbox-style'
-
 import parcel from './Parcel'
 
 const image = new CircleStyle({
@@ -32,12 +29,11 @@ class Map extends React.Component {
       center: this.parcel.getGeometry().getCoordinates(),
       zoom: 10
     })
-    setInterval(_ => {
-      this.view.setCenter(this.parcel.getGeometry().flatCoordinates)
-    }, 1000/25)
+    this.updateView = this.updateView.bind(this)
+    this.parcel.getGeometry().on('change', this.updateView)
   }
   componentDidMount() {
-    const map = new olMap({
+    this.map = new olMap({
       view: this.view,
       layers: [
         new TileLayer({
@@ -54,7 +50,17 @@ class Map extends React.Component {
       ],
       target: 'map'
     })
+    window.map = this.map // Fuck this
     // apply('map', '/fiord-color-gl-style.json')
+  }
+  updateView() {
+    const viewCenter = this.view.getCenter()
+    const delta = this.parcel.delta || [0,0]
+    this.view.setCenter([
+      viewCenter[0] + delta[0],
+      viewCenter[1] + delta[1]
+    ])
+    this.parcel.delta = [0,0]
   }
   render() {
     return <div id="map" />
