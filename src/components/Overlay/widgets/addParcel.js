@@ -47,6 +47,7 @@ class AddParcel extends Component {
           <div>TODO: x, y, z, weight</div>
           <div>TODO: And pickup / delivery positions (GPS for now)</div>
           <div>TODO: use getCurrentPosition (if navigator.geolocation)</div>
+          <div>TODO: sleep</div>
 
         </Modal>
       </div>
