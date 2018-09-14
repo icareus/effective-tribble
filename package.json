@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.9.2",
     "ol": "^5.2.0",
     "ol-mapbox-style": "^3.0.1",
     "react": "^16.4.2",

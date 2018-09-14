@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Overlay = ({ children }) =>
-  <div className='Overlay clickthrough'>
-    <p>TODO:<br />Overlay shit !!!</p>
-  </div>
+import { Button } from 'antd'
+
+import AddParcel from './widgets/addParcel'
+
+class Overlay extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      creating: ''
+    }
+  }
+  render() {
+    return (
+      <div className='Overlay clickthrough'>
+        <AddParcel />
+      </div>
+    )
+  }
+}
 
 export default Overlay
