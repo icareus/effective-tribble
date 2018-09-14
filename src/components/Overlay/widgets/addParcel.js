@@ -46,6 +46,7 @@ class AddParcel extends Component {
           <div>TODO: Add parcel creation form</div>
           <div>TODO: x, y, z, weight</div>
           <div>TODO: And pickup / delivery positions (GPS for now)</div>
+          <div>TODO: use getCurrentPosition (if navigator.geolocation)</div>
 
         </Modal>
       </div>
