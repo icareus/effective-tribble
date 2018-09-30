@@ -25,19 +25,17 @@ const trajectory = new LineString([
   fromLonLat(endCoords)
 ])
 
-console.log('From:', from)
-console.log('To:', to)
-console.log('Parcel:', parcel)
-console.log('trajectory:', trajectory)
-
-
+// console.log('From:', from)
+// console.log('To:', to)
+// console.log('Parcel:', parcel)
+// console.log('trajectory:', trajectory)
 
 const moveParcel = (newCoords, parcel) => {
   parcel.getGeometry().setCoordinates(newCoords)
 }
 
 const computePos = (trajectory, speed, elapsed) => {
-  console.log("T,S,E", trajectory, speed, elapsed)
+  // console.log("T,S,E", trajectory, speed, elapsed)
 
   const distance = speed * elapsed // speed and time units have to be consistent !
   const length = trajectory.getLength(trajectory)
@@ -45,7 +43,7 @@ const computePos = (trajectory, speed, elapsed) => {
   const fractionDone = [distance / length]
   const newCoords = trajectory.getCoordinateAt(fractionDone)
 
-  console.log(newCoords)
+  // console.log(newCoords)
 
   return newCoords
 }

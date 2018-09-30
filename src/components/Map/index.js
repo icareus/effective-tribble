@@ -27,7 +27,7 @@ class Map extends React.Component {
     this.parcel = parcel
     this.view = new View({
       center: this.parcel.getGeometry().getCoordinates(),
-      zoom: 10
+      zoom: 11
     })
     this.updateView = this.updateView.bind(this)
     this.parcel.getGeometry().on('change', this.updateView)

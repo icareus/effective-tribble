@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
 
-import { Button } from 'antd'
-
 import AddParcel from './widgets/addParcel'
+import Menu from './menu'
 
 class Overlay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      creating: ''
-    }
-  }
   render() {
     return (
       <div className='Overlay clickthrough'>
-        <AddParcel />
+        <Menu>
+          <AddParcel />
+        </Menu>
       </div>
     )
   }
