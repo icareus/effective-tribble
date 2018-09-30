@@ -79,14 +79,14 @@ class Menu extends Component {
           bordered={false}
           defaultActiveKey={['2', '3']}>
           <Panel header="Create Quest" key="1">
-              <Button onClick={this.startPick}>
-                <img
-                  width='32px'
-                  height='32px'
-                  src="/res/svg/pick-location-icon.svg"
-                  alt="Pick location" />
-                Start Location
-              </Button>
+            <Button onClick={this.startPick}>
+              <img
+                width='32px'
+                height='32px'
+                src="/res/svg/pick-location-icon.svg"
+                alt="Pick location" />
+              Start Location
+            </Button>
             { this.state.startLocation &&
               <p>
                 x: {this.state.startLocation[0]}<br />
